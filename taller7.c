@@ -76,6 +76,7 @@ int anadirHijo(Persona *padre, Persona *hijo){
 		nuevo->per = hijo;
 		nuevo->siguiente = nuevo;
 		lista_hijos->siguiente = nuevo;
+		nuevo->siguiente = NULL;
 		return 0;	
 		
 	}
