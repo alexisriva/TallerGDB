@@ -113,7 +113,7 @@ int main(void){
 		int edad = edadMin + rand() / (RAND_MAX / (edadMax - edadMin + 1) + 1);
 		int peso = pesoMin + rand() / (RAND_MAX / (pesoMax - pesoMin + 1) + 1);
 
-		crearPersona(nombres[i],  edad, peso);
+		listaPersona[i] = crearPersona(nombres[i],  edad, peso);
 
 	}
 
