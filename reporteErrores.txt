@@ -1,0 +1,34 @@
+Integrantes: Viviana Laurido y Alexis Rivadeneira
+
+LINK REPOSITORIO: https://github.com/alexisriva/TallerGDB.git
+
+REPORTE ERRORES TALLER7
+
+1) Se arreglaron 3 warnings que aparecían al tratar de hacer el ejecutable con -Wall
+	Esto se hizo inicializando Persona en crearPersona a NULL
+	También cambiando el return de la función crearPersona a nuevo en vez de &nuevo
+
+2) Se arregló un error de Segmentation Fault que aparecía al ejecutar crearPersona en el main
+	Esto se hizo asignándole un espacio de persona a la persona que se crea en el método 
+		Persona *nuevo=NULL;
+		nuevo = (Persona *)malloc(TAMANO*sizeof(Persona));
+	Además se cambio por un pequeño error de tipeo el parámetro peso a int que estaba como float
+
+3)Se arregló un error de segmentationFault al llamar añadirHijo en el main
+	Esto se solucionó agregando a la persona creada a la listaPersona, ya que sólo se creadab las 
+	personas y no se guardaban, por lo tanto no habían personas a las cuales añadirles hijos.
+		listaPersona[i] = crearPersona(nombres[i],  edad, peso);
+	
+4)Se arregló un lazo infinito al mostrarPersona en el main
+	Esto se solucionó haciendo que el último hijo de la lista de hijos apunte a NULL, ya que cuando
+	una persona tenía más de un hijo, se hacía un print infinito. Para esto se modificó la función añadirHijo
+		nuevo->siguiente = NULL;
+
+5)Se arregló un error de stack smashing
+	Esto se solucionó eliminando un igual alado de un menor en la condición de un for, cuando se generan
+	los números aleatorios para edad y peso de personas, ya que se crean 8 numeros diferentes de cada uno, pero 
+	el tamaño de la lista es 7, por lo tanto se estaban sobreescribiendo las variables canaries al final del arreglo
+		for(i = 0; i < TAMANO; i++){			
+			int edad = edadMin + rand() / (RAND_MAX / (edadMax - edadMin + 1) + 1);
+			int peso = pesoMin + rand() / (RAND_MAX / (pesoMax - pesoMin + 1) + 1);
+		{
