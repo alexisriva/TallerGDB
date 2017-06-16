@@ -109,7 +109,7 @@ int main(void){
 
 	int i = 0;
 
-	for(i = 0; i <= TAMANO; i++){			
+	for(i = 0; i < TAMANO; i++){			
 
 		int edad = edadMin + rand() / (RAND_MAX / (edadMax - edadMin + 1) + 1);
 		int peso = pesoMin + rand() / (RAND_MAX / (pesoMax - pesoMin + 1) + 1);
@@ -128,10 +128,8 @@ int main(void){
 
 	
 	for(i = 0; i < TAMANO; i++){			
-
 		mostrarInfoPersona(listaPersona[i]);
 		printf("\n");
-
 	}
 
 	
